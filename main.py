@@ -6,11 +6,12 @@ from email.mime.multipart import MIMEMultipart
 
 
 class Email:
-    def __init__(self, login, password):
-        self.domain_smtp = 'smtp.yandex.ru'
-        self.domain_imap = 'imap.yandex.ru'
-        self.port_smtp = 465
-        self.port_imap = 993
+    def __init__(self, login, password, domain_smtp='smtp.yandex.ru',
+                 domain_imap='imap.yandex.ru', port_smtp=465, port_imap=993):
+        self.domain_smtp = domain_smtp
+        self.domain_imap = domain_imap
+        self.port_smtp = port_smtp
+        self.port_imap = port_imap
         self.login = login
         self.password = password
         try:
@@ -63,5 +64,5 @@ if __name__ == '__main__':
     # Change to your credentials.
     user_name = Email('user_name@yandex.ru', 'password')
     print(user_name.send_message(subject='Subject', message='Hello friend',
-                                 recipients='login@domain.ru'))
+                                 recipients='login@gmail.com, login2@mail.ru'))
     print(user_name.receive_message())
